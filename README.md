@@ -11,27 +11,13 @@
   <img src="https://img.shields.io/badge/tests-27%2F27%20passing-success" alt="Tests: 27/27 passing">
 </p>
 
-Paste a YouTube URL into your coding agent and get a clean summary. The full transcript is cached locally so follow-up questions are answered without re-downloading — even across sessions.
+Paste a YouTube URL into your coding agent and get a clean summary. The full transcript is cached locally so follow-up questions are answered without re-downloading — even across sessions. The summary adapts to the video type: tutorials get a TL;DR plus sections, interviews get key questions and answers, news gets bullets, reviews get pros and cons.
 
 Works out of the box with Claude Code, Cursor, OpenCode, and 40+ other agents.
 
 <p align="center">
   <img src="./assets/session.svg" alt="yt-summary running in an AI agent: a user pastes a YouTube URL and the agent returns a formatted summary" width="880">
 </p>
-
-## How it works
-
-```mermaid
-flowchart LR
-    URL([YouTube URL]) --> Script[yt-summary.py]
-    Script --> YTDLP[yt-dlp]
-    YTDLP --> VTT[Cleaned transcript]
-    VTT --> Cache[(Local cache)]
-    Cache --> Agent[Your agent]
-    Agent --> Summary([Adaptive summary])
-```
-
-The skill calls `yt-dlp` to fetch the captions, strips timing cues and duplicates, and writes the cleaned transcript to a local cache. Your agent then reads the transcript, picks a format based on the video type (tutorial, interview, news, review, keynote…), and writes the summary in your conversation language.
 
 ## Install
 
