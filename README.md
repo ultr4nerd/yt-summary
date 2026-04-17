@@ -7,12 +7,11 @@
 
 <p align="center">
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/python-3.8%2B-3776AB?logo=python&logoColor=white" alt="Python 3.8+">
-  <img src="https://img.shields.io/badge/tests-27%2F27%20passing-success" alt="Tests: 27/27 passing">
   <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20OpenCode%20%C2%B7%2040%2B-FF0000" alt="Works with Claude Code, Cursor, OpenCode, and 40+ agents">
+  <img src="https://img.shields.io/badge/tests-27%2F27%20passing-success" alt="Tests: 27/27 passing">
 </p>
 
-A skill that summarizes YouTube videos by extracting the transcript with `yt-dlp`, producing an adaptive-format summary in your conversation language, and caching the full transcript locally so follow-up questions are answered without re-downloading.
+Paste a YouTube URL into your coding agent and get a clean summary. The full transcript is cached locally so follow-up questions are answered without re-downloading — even across sessions.
 
 Works out of the box with Claude Code, Cursor, OpenCode, and 40+ other agents.
 
@@ -32,14 +31,11 @@ flowchart LR
     Agent --> Summary([Adaptive summary])
 ```
 
-The bundled Python script calls `yt-dlp` to fetch the captions, strips timing cues and duplicate lines, and writes the cleaned transcript to a local cache. Your agent then reads the transcript, picks a format based on the video type (tutorial, interview, news, review, keynote…), and writes the summary in your conversation language. Follow-up questions hit the cached transcript directly — no re-download, even across sessions.
+The skill calls `yt-dlp` to fetch the captions, strips timing cues and duplicates, and writes the cleaned transcript to a local cache. Your agent then reads the transcript, picks a format based on the video type (tutorial, interview, news, review, keynote…), and writes the summary in your conversation language.
 
-## Requirements
+## Install
 
-- **Python 3.8+** — bundled with modern macOS and every Linux distro. On Windows install from the Microsoft Store or with `winget install Python.Python.3`.
-- **yt-dlp** — the only external binary dependency. Official install guide: [yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp#installation).
-
-Common `yt-dlp` install commands:
+First, make sure `yt-dlp` is on your `PATH` — it's the only external tool the skill needs:
 
 ```bash
 brew install yt-dlp              # macOS
@@ -48,11 +44,9 @@ pip install yt-dlp               # fallback
 winget install yt-dlp.yt-dlp     # Windows
 ```
 
-If none of these fit your environment, follow the [official instructions](https://github.com/yt-dlp/yt-dlp#installation) — yt-dlp also ships standalone binaries for macOS, Linux, and Windows.
+Full instructions and standalone binaries for all platforms live at [yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp#installation).
 
-The bundled script is plain Python (stdlib only), so it runs natively on **macOS, Linux, and Windows** — no WSL, no Git Bash required.
-
-## Install
+Then install the skill in your agent. Pick whichever path matches your setup:
 
 | Multi-agent (recommended) | Claude Code plugin | Shell fallback |
 |:---|:---|:---|
@@ -77,7 +71,7 @@ AGENT=claude   bash <(curl -fsSL https://raw.githubusercontent.com/ultr4nerd/yt-
 
 ## Usage
 
-Once installed, there's nothing to remember — paste a YouTube URL:
+Once installed, there's nothing to remember — paste a YouTube URL into your agent:
 
 ```
 Summarize this: https://www.youtube.com/watch?v=dQw4w9WgXcQ
@@ -99,39 +93,65 @@ Paste several URLs in one message; the skill processes them sequentially and cac
 What did Jack say about webhooks in the Claude Code 2.0 video?
 ```
 
-The skill grep's the cached transcript and answers with literal quotes — no re-download.
+The skill grep's the cached transcript and answers with literal quotes — no re-download, even across sessions.
 
-## Cache
+## Your cache
 
-- Location: `${XDG_DATA_HOME:-~/.local/share}/yt-summary/`
-- Format: one `.md` file per video with YAML frontmatter (metadata) and the cleaned transcript. Summaries are produced fresh each turn and displayed in chat — they are not persisted.
-- Typical size: 20–50 KB per video.
-- Clear the cache at any time: `rm -rf ~/.local/share/yt-summary/`
+- **Where:** `${XDG_DATA_HOME:-~/.local/share}/yt-summary/`
+- **What's inside:** one `.md` file per video with YAML frontmatter (metadata) and the cleaned transcript. Summaries are produced fresh each turn — they are not persisted.
+- **Size:** typically 20–50 KB per video.
+- **Clear it at any time:** `rm -rf ~/.local/share/yt-summary/`
 
-## Standalone usage of the script
+<details>
+<summary><b>For contributors</b></summary>
 
-The Python script inside the skill works on its own — you don't need an agent to use it:
+### Project layout
+
+```
+yt-summary/
+├── .claude-plugin/              # Claude Code plugin manifests
+├── skills/yt-summary/
+│   ├── SKILL.md                 # the skill definition (Anthropic Agent Skills Spec)
+│   └── scripts/yt-summary.py    # the bundled script (Python stdlib only)
+├── assets/                      # hero SVGs + demo GIF + VHS tape
+├── tests/test_script.py         # 27 tests, no external deps
+└── install.sh                   # shell fallback installer
+```
+
+### Requirements for running the script directly
+
+- **Python 3.8+** — preinstalled on modern macOS and every Linux distro. On Windows install from the Microsoft Store or with `winget install Python.Python.3`.
+- **yt-dlp** — same install commands as above.
+
+The script is plain Python (stdlib only), so it runs natively on macOS, Linux, and Windows — no WSL, no Git Bash required.
+
+### Running the script standalone
 
 ```bash
 python3 skills/yt-summary/scripts/yt-summary.py https://www.youtube.com/watch?v=dQw4w9WgXcQ
 # Prints: NEW:<path> (first time) or CACHED:<path> (subsequent runs)
 ```
 
-On Windows where `python3` may not exist, use `python` or `py -3`:
+On Windows use `python` or `py -3` if `python3` is not on `PATH`.
 
-```powershell
-python skills\yt-summary\scripts\yt-summary.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-```
-
-## Tests
-
-Run the bundled test suite (stdlib only, no pytest needed):
+### Running the tests
 
 ```bash
 python3 tests/test_script.py
 ```
 
 Covers URL parsing, slug generation, VTT cleanup, and every CLI exit code. The happy-path test requires `yt-dlp` and network access; everything else runs offline.
+
+### Regenerating the demo GIF
+
+Requires [`vhs`](https://github.com/charmbracelet/vhs) (`brew install vhs`).
+
+```bash
+find ~/.local/share/yt-summary -name '*efGXZselN64*.md' -delete 2>/dev/null
+vhs assets/demo.tape
+```
+
+</details>
 
 ## License
 
