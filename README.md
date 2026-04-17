@@ -2,25 +2,24 @@
 
 A skill that summarizes YouTube videos by extracting the transcript with `yt-dlp`, producing an adaptive-format summary in your conversation language, and caching the full transcript locally so follow-up questions are answered without re-downloading.
 
-Follows the [Anthropic Agent Skills Specification](https://github.com/anthropics/skills), so a single `SKILL.md` works across every agent that implements the spec — Claude Code, Cursor, OpenCode, and more.
+Works out of the box with Claude Code, Cursor, OpenCode, and 40+ other agents.
 
 ## What it does
 
 1. You paste a YouTube URL or say "summarize this video: …".
-2. The bundled shell script downloads the captions with `yt-dlp` and normalizes the VTT into clean text.
+2. The bundled Python script downloads the captions with `yt-dlp` and normalizes the VTT into clean text.
 3. Your agent reads the transcript, picks a format based on the video type (tutorial, interview, news, review, keynote…), and writes the summary.
-4. The full transcript and the summary are saved to `~/.local/share/yt-summary/<date>-<video-id>-<slug>.md`.
+4. The cleaned transcript is saved to `~/.local/share/yt-summary/<date>-<video-id>-<slug>.md`.
 5. A footer tells you where the file is and how much disk the cache is using.
 
 If you ask a follow-up question later — even in a different session — the agent finds the cached file by video ID and grep/reads only the relevant lines instead of re-downloading.
 
 ## Requirements
 
-- **Python 3.8+** — bundled with modern macOS and every Linux distro. On Windows install via Microsoft Store or `winget install Python.Python.3`.
-- **yt-dlp** — the only external binary dependency.
-- An agent that supports the [Anthropic Agent Skills Specification](https://github.com/anthropics/skills).
+- **Python 3.8+** — bundled with modern macOS and every Linux distro. On Windows install from the Microsoft Store or with `winget install Python.Python.3`.
+- **yt-dlp** — the only external binary dependency. Official install guide: [yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp#installation).
 
-Install `yt-dlp` with one of:
+Common `yt-dlp` install commands:
 
 ```bash
 brew install yt-dlp              # macOS
@@ -28,6 +27,8 @@ pipx install yt-dlp              # cross-platform (preferred)
 pip install yt-dlp               # fallback
 winget install yt-dlp.yt-dlp     # Windows
 ```
+
+If none of these fit your environment, follow the [official instructions](https://github.com/yt-dlp/yt-dlp#installation) — yt-dlp also ships standalone binaries for macOS, Linux, and Windows.
 
 The bundled script is plain Python (stdlib only), so it runs natively on **macOS, Linux, and Windows** — no WSL, no Git Bash required.
 
