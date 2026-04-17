@@ -16,7 +16,7 @@ Paste a YouTube URL into your coding agent and get a clean summary. The full tra
 Works out of the box with Claude Code, Cursor, OpenCode, and 40+ other agents.
 
 <p align="center">
-  <img src="./assets/demo.gif" alt="yt-summary standalone demo" width="820">
+  <img src="./assets/session.svg" alt="yt-summary running in an AI agent: a user pastes a YouTube URL and the agent returns a formatted summary" width="880">
 </p>
 
 ## How it works
@@ -142,9 +142,11 @@ python3 tests/test_script.py
 
 Covers URL parsing, slug generation, VTT cleanup, and every CLI exit code. The happy-path test requires `yt-dlp` and network access; everything else runs offline.
 
-### Regenerating the demo GIF
+### Standalone-script demo GIF
 
-Requires [`vhs`](https://github.com/charmbracelet/vhs) (`brew install vhs`).
+`assets/demo.gif` is a VHS-recorded terminal capture of the bundled script running end-to-end (cache miss → cache hit). It's there as a sanity check for people who want to see the plumbing without installing a whole agent.
+
+Regenerate it with [`vhs`](https://github.com/charmbracelet/vhs) (`brew install vhs`):
 
 ```bash
 find ~/.local/share/yt-summary -name '*efGXZselN64*.md' -delete 2>/dev/null

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" role="img" aria-label="yt-summary — summarize YouTube videos in any AI agent">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-label="yt-summary — summarize YouTube videos in any AI agent">
   <!-- Play button: YouTube-red circle with a white triangle -->
   <circle cx="100" cy="140" r="70" fill="#FF0000"/>
   <path d="M 85 108 L 85 172 L 138 140 Z" fill="#FFFFFF"/>

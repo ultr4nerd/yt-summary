@@ -1,0 +1,12 @@
+# Lower the noise in GitHub's language bar and workflow suggestions:
+# install.sh is a small helper, not the core of the project.
+install.sh linguist-vendored
+
+# Treat the VHS tape source as documentation (it exists only to regenerate
+# the assets; the project runs without it).
+assets/demo.tape linguist-documentation
+
+# Keep binary assets excluded from linguist analysis explicitly.
+assets/* binary
+*.svg binary
+*.gif binary

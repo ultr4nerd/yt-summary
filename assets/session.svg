@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="yt-summary running in Claude Code: a user pastes a YouTube URL and the agent returns a formatted summary.">
+  <defs>
+    <style>
+      .prose { font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+      .mono  { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="720" fill="#0a0f1a"/>
+
+  <!-- Subtle top border -->
+  <rect x="0" y="0" width="1200" height="40" fill="#0a0f1a"/>
+  <text class="mono" x="1168" y="26" font-size="11" fill="#475569" text-anchor="end">Claude Code</text>
+
+  <!-- ─── User message ─────────────────────────────────────────────── -->
+
+  <circle cx="44" cy="76" r="14" fill="#475569"/>
+  <text class="prose" x="44" y="80" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">U</text>
+  <text class="prose" x="68" y="72" font-size="13" font-weight="600" fill="#94a3b8">You</text>
+
+  <text class="mono" x="68" y="98" font-size="14" fill="#e2e8f0">
+    <tspan>Summarize this: </tspan><tspan fill="#60a5fa">https://www.youtube.com/watch?v=efGXZselN64</tspan>
+  </text>
+
+  <!-- Divider -->
+  <line x1="30" y1="130" x2="1170" y2="130" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- ─── Tool trace ───────────────────────────────────────────────── -->
+
+  <circle cx="38" cy="164" r="4" fill="#10b981"/>
+  <text class="mono" x="52" y="168" font-size="13" fill="#cbd5e1">
+    <tspan font-weight="600">Skill</tspan><tspan fill="#64748b">(</tspan><tspan fill="#f59e0b">yt-summary</tspan><tspan fill="#64748b">)</tspan>
+  </text>
+  <text class="mono" x="52" y="188" font-size="12" fill="#64748b">└ Successfully loaded skill</text>
+
+  <circle cx="38" cy="218" r="4" fill="#10b981"/>
+  <text class="mono" x="52" y="222" font-size="13" fill="#cbd5e1">
+    <tspan font-weight="600">Bash</tspan><tspan fill="#64748b">(python3 ~/.claude/skills/yt-summary/scripts/yt-summary.py "https://www.youtube.com/watch?v=efGXZselN64")</tspan>
+  </text>
+  <text class="mono" x="52" y="242" font-size="12" fill="#64748b">└ CACHED:~/.local/share/yt-summary/2026-04-16-efGXZselN64-claude-code-20-is-here-automate.md</text>
+
+  <circle cx="38" cy="272" r="4" fill="#10b981"/>
+  <text class="mono" x="52" y="276" font-size="13" fill="#cbd5e1">
+    <tspan font-weight="600">Read</tspan><tspan fill="#64748b"> 1 file</tspan>
+  </text>
+
+  <!-- Divider -->
+  <line x1="30" y1="308" x2="1170" y2="308" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- ─── Assistant response ───────────────────────────────────────── -->
+
+  <!-- Assistant avatar: YouTube-red with a tiny play triangle -->
+  <circle cx="44" cy="346" r="14" fill="#FF0000"/>
+  <path d="M 40 339 L 40 353 L 52 346 Z" fill="#ffffff"/>
+  <text class="prose" x="68" y="342" font-size="13" font-weight="600" fill="#94a3b8">yt-summary</text>
+
+  <!-- Video title -->
+  <text class="prose" x="68" y="378" font-size="22" font-weight="700" fill="#f8fafc">
+    📺 Claude Code 2.0 Is Here… Automate Anything
+  </text>
+
+  <!-- Metadata line -->
+  <text class="prose" x="68" y="406" font-size="13" fill="#94a3b8">
+    Channel: Jack Roberts  ·  Duration: 18:16  ·  Published: 2026-04-16  ·  21,139 views
+  </text>
+
+  <!-- TL;DR -->
+  <text class="prose" x="68" y="446" font-size="14" font-weight="700" fill="#f8fafc">TL;DR</text>
+  <text class="prose" x="68" y="470" font-size="15" fill="#e2e8f0">
+    Claude Code 2.0 unifies chat, code, and co-work into one app and ships
+  </text>
+  <text class="prose" x="68" y="490" font-size="15" fill="#e2e8f0">
+    <tspan font-weight="600">Routines</tspan> — cloud agents that run 24/7 via cron, webhooks, or manual triggers.
+  </text>
+
+  <!-- Section: What's new -->
+  <text class="prose" x="68" y="528" font-size="14" font-weight="700" fill="#f8fafc">What's new in 2.0</text>
+  <text class="prose" x="68" y="552" font-size="14" fill="#cbd5e1">
+    <tspan fill="#FF0000">▸</tspan> Unified app — toggle between Chat, Code, and Co-work
+  </text>
+  <text class="prose" x="68" y="574" font-size="14" fill="#cbd5e1">
+    <tspan fill="#FF0000">▸</tspan> Parallel project sessions in the sidebar
+  </text>
+  <text class="prose" x="68" y="596" font-size="14" fill="#cbd5e1">
+    <tspan fill="#FF0000">▸</tspan> <tspan font-weight="600" fill="#e2e8f0">Routines:</tspan> cloud agents triggered by cron, webhook, or manually
+  </text>
+  <text class="prose" x="68" y="618" font-size="14" fill="#cbd5e1">
+    <tspan fill="#FF0000">▸</tspan> Hooks, voice dictation, YOLO mode
+  </text>
+
+  <!-- Footer: skill's transparent cache footer -->
+  <rect x="60" y="648" width="1080" height="46" rx="8" fill="#141a2a"/>
+  <text class="mono" x="76" y="672" font-size="12" fill="#94a3b8">
+    📎 Transcript saved: ~/.local/share/yt-summary/2026-04-16-efGXZselN64-claude-code-20-is-here-automate.md (23 KB)
+  </text>
+  <text class="mono" x="76" y="688" font-size="12" fill="#64748b">
+    Cache total: 1 file, 23 KB
+  </text>
+</svg>
