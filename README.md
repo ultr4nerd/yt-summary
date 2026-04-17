@@ -32,14 +32,34 @@ winget install yt-dlp.yt-dlp     # Windows
 
 Full instructions and standalone binaries for all platforms live at [yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp#installation).
 
-Then install the skill in your agent. Pick whichever path matches your setup:
+Then install the skill in your agent. Pick whichever path matches your setup.
 
-| Multi-agent (recommended) | Claude Code plugin | Shell fallback |
-|:---|:---|:---|
-| Auto-detects your agent and copies the skill to the right place. Works with 40+ agents via [`vercel-labs/skills`](https://github.com/vercel-labs/skills). | Install as a native Claude Code plugin. | Detects Claude Code / Cursor / OpenCode and installs manually. |
-| `npx skills add ultr4nerd/yt-summary` | `/plugin marketplace add ultr4nerd/yt-summary` then `/plugin install yt-summary@yt-summary` | <code>curl&nbsp;-fsSL&nbsp;https://raw.githubusercontent.com/ultr4nerd/yt-summary/main/install.sh&nbsp;\|&nbsp;bash</code> |
+### Multi-agent (recommended)
 
-You can force a specific target with the shell fallback:
+Auto-detects your agent and copies the skill to the right place. Works with 40+ agents via [`vercel-labs/skills`](https://github.com/vercel-labs/skills).
+
+```bash
+npx skills add ultr4nerd/yt-summary
+```
+
+### Claude Code plugin
+
+Install as a native Claude Code plugin:
+
+```
+/plugin marketplace add ultr4nerd/yt-summary
+/plugin install yt-summary@yt-summary
+```
+
+### Shell fallback
+
+Detects Claude Code / Cursor / OpenCode and installs manually:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ultr4nerd/yt-summary/main/install.sh | bash
+```
+
+You can force a specific target:
 
 ```bash
 AGENT=cursor   bash <(curl -fsSL https://raw.githubusercontent.com/ultr4nerd/yt-summary/main/install.sh)
