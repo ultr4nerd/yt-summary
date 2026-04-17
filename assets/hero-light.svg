@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" role="img" aria-label="yt-summary — summarize YouTube videos in any AI agent">
+  <!-- Play button: YouTube-red circle with a white triangle -->
+  <circle cx="100" cy="140" r="70" fill="#FF0000"/>
+  <path d="M 85 108 L 85 172 L 138 140 Z" fill="#FFFFFF"/>
+
+  <!-- Waveform bars (red, semi-transparent) -->
+  <g fill="#FF0000" fill-opacity="0.35">
+    <rect x="210" y="120" width="10" height="40" rx="3"/>
+    <rect x="232" y="100" width="10" height="80" rx="3"/>
+    <rect x="254" y="110" width="10" height="60" rx="3"/>
+    <rect x="276" y="88"  width="10" height="104" rx="3"/>
+    <rect x="298" y="108" width="10" height="64" rx="3"/>
+    <rect x="320" y="120" width="10" height="40" rx="3"/>
+  </g>
+
+  <!-- Arrow connector -->
+  <g stroke="#0F172A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="350" y1="140" x2="420" y2="140"/>
+    <polyline points="408,128 420,140 408,152"/>
+  </g>
+
+  <!-- Transcript lines -->
+  <g fill="#0F172A" fill-opacity="0.8">
+    <rect x="444" y="100" width="220" height="14" rx="7"/>
+    <rect x="444" y="124" width="260" height="14" rx="7"/>
+    <rect x="444" y="148" width="180" height="14" rx="7"/>
+    <rect x="444" y="172" width="240" height="14" rx="7"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="740" y="140" font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif" font-weight="800" font-size="48" fill="#0F172A" letter-spacing="-1.5">yt-summary</text>
+
+  <!-- Tagline -->
+  <text x="740" y="170" font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif" font-weight="500" font-size="15" fill="#0F172A" fill-opacity="0.6">Summarize YouTube videos in any AI agent.</text>
+</svg>
