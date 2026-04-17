@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local testing artifacts
+/tmp/
+*.log
+
+# Cache directory contents (if someone runs the skill in-tree)
+.local/

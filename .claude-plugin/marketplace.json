@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "yt-summary",
+  "description": "Summarize YouTube videos with yt-dlp, cache transcripts locally, and answer follow-up questions without re-downloading.",
+  "owner": {
+    "name": "Mauricio Chávez",
+    "url": "https://github.com/ultr4nerd"
+  },
+  "plugins": [
+    {
+      "name": "yt-summary",
+      "description": "Summarize YouTube videos with yt-dlp. Extracts the transcript, produces an adaptive-format summary, and caches the full transcript locally for follow-up questions.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Mauricio Chávez",
+        "url": "https://github.com/ultr4nerd"
+      },
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/ultr4nerd/yt-summary"
+    }
+  ]
+}

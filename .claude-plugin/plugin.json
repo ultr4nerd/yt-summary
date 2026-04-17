@@ -1,0 +1,25 @@
+{
+  "name": "yt-summary",
+  "version": "0.1.0",
+  "description": "Summarize YouTube videos with yt-dlp. Extracts the transcript, produces an adaptive-format summary, and caches the full transcript locally for follow-up questions.",
+  "author": {
+    "name": "Mauricio Chávez",
+    "email": "mauriciochavezolea@gmail.com",
+    "url": "https://github.com/ultr4nerd"
+  },
+  "homepage": "https://github.com/ultr4nerd/yt-summary",
+  "repository": "https://github.com/ultr4nerd/yt-summary",
+  "license": "MIT",
+  "keywords": [
+    "youtube",
+    "summarize",
+    "transcript",
+    "yt-dlp",
+    "video",
+    "skill",
+    "claude-code",
+    "cursor",
+    "opencode"
+  ],
+  "hooks": {}
+}
